@@ -1,0 +1,108 @@
+﻿Project Name,Module Name,Created By,Creation Date,Reviewed By,Review Date,Test Scenario,Test Case ID,Description,Test Steps,Preconditions,Test Data,Postconditions,Expected Result,Actual Result,Status,Executed By,Execution Date,Priority,Type,Additional Comments
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Successful login with email,FB-LGN-001,Verify login using a registered email and correct password.,"1. Open Facebook login page
+2. Enter registered email
+3. Enter correct password
+4. Select Log In",Active Facebook account; user is logged out; internet available,"Email: qa.valid@example.com
+Password: ValidPass#2026",Authenticated session is created; Home page is displayed,Login succeeds; user lands on the authenticated Home page with the correct account and no error message.,Not executed,Not Run,Unassigned,—,Critical,Positive,Use a dedicated non-production test account.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Successful login with phone number,FB-LGN-002,Verify login using a registered mobile number and correct password.,"1. Open login page
+2. Enter registered phone number with country code
+3. Enter correct password
+4. Select Log In",Active account linked to the phone number; user logged out,"Phone: +1 202-555-0147
+Password: ValidPass#2026",Authenticated session is created,Login succeeds and the correct account Home page is shown.,Not executed,Not Run,Unassigned,—,High,Positive,Use a test number that is already verified.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Submit login with Enter key,FB-LGN-003,Verify pressing Enter submits valid login credentials.,"1. Open login page
+2. Enter valid email and password
+3. Press Enter while focus is in password field",Active test account; user logged out,qa.valid@example.com / ValidPass#2026,Authenticated session is created,Form submits once and login succeeds without requiring a mouse click.,Not executed,Not Run,Unassigned,—,High,Positive,Confirms keyboard-friendly submission.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Invalid email and valid password,FB-LGN-004,Verify the system rejects an unregistered email with an otherwise valid-format password.,"1. Open login page
+2. Enter unregistered email
+3. Enter valid-format password
+4. Select Log In",User logged out,unknown.user@example.com / ValidPass#2026,No authenticated session is created,"Login is denied; a clear, non-sensitive error is displayed and the password is not exposed.",Not executed,Not Run,Unassigned,—,Critical,Negative,Message must not reveal whether the account exists.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Valid email and incorrect password,FB-LGN-005,Verify login fails when the password is incorrect.,"1. Open login page
+2. Enter registered email
+3. Enter incorrect password
+4. Select Log In",Active test account; user logged out,qa.valid@example.com / WrongPass#2026,No authenticated session is created,Login is denied with a clear error and a recovery path; account data remains protected.,Not executed,Not Run,Unassigned,—,Critical,Negative,Check that the failed attempt is recorded server-side if auditing is enabled.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Invalid email and incorrect password,FB-LGN-006,Verify login fails when both credentials are invalid.,"1. Open login page
+2. Enter unregistered email
+3. Enter incorrect password
+4. Select Log In",User logged out,nobody@example.com / WrongPass#2026,No authenticated session is created,Login is denied and a generic credential error is shown without account enumeration.,Not executed,Not Run,Unassigned,—,Critical,Negative,Error wording should remain consistent with other invalid-credential cases.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Blank email and blank password,FB-LGN-007,Verify mandatory-field validation when both fields are empty.,"1. Open login page
+2. Leave both fields blank
+3. Select Log In",User logged out,"Email: blank
+Password: blank",No authenticated session is created,Required-field validation is shown; the form is not authenticated and focus moves to the first invalid field.,Not executed,Not Run,Unassigned,—,High,Negative,Validate visible and screen-reader-accessible error association.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Blank email only,FB-LGN-008,Verify validation when the identifier field is empty.,"1. Open login page
+2. Leave email/phone blank
+3. Enter a password
+4. Select Log In",User logged out,"Email/phone: blank
+Password: ValidPass#2026",No authenticated session is created,Identifier validation is displayed and login does not proceed.,Not executed,Not Run,Unassigned,—,High,Negative,Password should remain masked.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Blank password only,FB-LGN-009,Verify validation when the password field is empty.,"1. Open login page
+2. Enter registered email
+3. Leave password blank
+4. Select Log In",User logged out,qa.valid@example.com / blank,No authenticated session is created,Password-required validation is displayed and login does not proceed.,Not executed,Not Run,Unassigned,—,High,Negative,Focus should move to the password field.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Malformed email address,FB-LGN-010,Verify handling of an incorrectly formatted email address.,"1. Open login page
+2. Enter malformed email
+3. Enter any password
+4. Select Log In",User logged out,qa.valid@ / AnyPass#1,No authenticated session is created,Input is rejected or login fails safely with a clear corrective message.,Not executed,Not Run,Unassigned,—,Medium,Negative,Do not require validation stricter than valid email standards.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Email case handling,FB-LGN-011,Verify email identifiers are handled without unintended case sensitivity.,"1. Enter the registered email using uppercase letters
+2. Enter correct password
+3. Select Log In",Active account registered as qa.valid@example.com,QA.VALID@EXAMPLE.COM / ValidPass#2026,Authenticated session is created,Login succeeds for the same email identity regardless of letter case.,Not executed,Not Run,Unassigned,—,Medium,Positive,Password case sensitivity remains unchanged.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Leading and trailing spaces in email,FB-LGN-012,Verify accidental spaces around an email do not cause unsafe or confusing behavior.,"1. Enter registered email with leading/trailing spaces
+2. Enter correct password
+3. Select Log In",Active account; user logged out,  qa.valid@example.com  / ValidPass#2026,Session is created only if normalized credentials are valid,Spaces are safely trimmed or a clear validation message is shown; no crash occurs.,Not executed,Not Run,Unassigned,—,Medium,Positive,Record actual normalization behavior for regression.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Password case sensitivity,FB-LGN-013,Verify passwords remain case-sensitive.,"1. Enter registered email
+2. Enter correct password with changed letter case
+3. Select Log In",Active account; user logged out,qa.valid@example.com / validpass#2026,No authenticated session is created,Login is denied because the password case differs from the registered password.,Not executed,Not Run,Unassigned,—,High,Negative,Do not display the entered password in the error.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Password masking,FB-LGN-014,Verify password characters are concealed while typing.,"1. Open login page
+2. Type a password
+3. Observe the password field",Login page is loaded,SecretPass#2026,No session change,Each password character is masked and is not visible as plain text by default.,Not executed,Not Run,Unassigned,—,High,Positive,Also verify copy/paste behavior follows product policy.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Show/hide password control,FB-LGN-015,"Verify the visibility control toggles the password safely, if present.","1. Type a password
+2. Activate show-password control
+3. Activate it again",Login page includes a password visibility control,SecretPass#2026,Password ends in masked state; no session change,First activation reveals the entered value; second masks it; value and focus are preserved.,Not executed,Not Run,Unassigned,—,Medium,Positive,"If the control is not offered, mark Not Applicable rather than Failed."
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Forgotten password navigation,FB-LGN-016,Verify the forgotten-password link opens account recovery.,"1. Open login page
+2. Select Forgotten password?",Login page is loaded,Registered identifier available for later recovery steps,User is on the recovery flow,The correct recovery page opens over HTTPS and provides a way to identify the account.,Not executed,Not Run,Unassigned,—,High,Positive,Do not complete recovery on a real personal account.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Recovery for registered email,FB-LGN-017,Verify account recovery can be initiated for a registered email.,"1. Open recovery flow
+2. Enter registered email
+3. Submit",Recovery page loaded; test mailbox accessible,qa.valid@example.com,Recovery request is generated according to policy,The account is located and an appropriate verification method is offered without exposing sensitive data.,Not executed,Not Run,Unassigned,—,Critical,Positive,Use a controlled mailbox and invalidate any generated token after testing.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Recovery for unknown identifier,FB-LGN-018,Verify recovery safely handles an unregistered identifier.,"1. Open recovery flow
+2. Enter unknown email/phone
+3. Submit",Recovery page loaded,unknown.user@example.com,No unauthorized recovery is initiated,"A safe, helpful response is shown without exposing account existence or private data.",Not executed,Not Run,Unassigned,—,High,Negative,Check for account-enumeration resistance.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Disabled account login,FB-LGN-019,Verify a disabled test account cannot authenticate and receives appropriate guidance.,"1. Enter disabled account identifier
+2. Enter its correct password
+3. Select Log In",Controlled disabled test account exists,disabled.qa@example.com / DisabledPass#2026,No authenticated session is created,Login is blocked and the user receives safe next-step guidance appropriate to account status.,Not executed,Not Run,Unassigned,—,Critical,Negative,Requires a preconfigured disabled test account.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Repeated failed attempts,FB-LGN-020,Verify abuse controls respond to repeated incorrect passwords.,"1. Enter valid identifier with wrong password repeatedly
+2. Observe responses and timing
+3. Attempt another login",Controlled test account; threshold agreed with security team,qa.valid@example.com / sequential wrong passwords,Account/session remains protected; any challenge or throttling is recorded,"Rate limiting, delay, challenge, or other approved protection activates without leaking sensitive information.",Not executed,Not Run,Unassigned,—,Critical,Negative,Execute only in an authorized test environment; do not cause production lockout.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,SQL injection payload,FB-LGN-021,Verify credential fields safely handle a basic SQL injection string.,"1. Enter injection string in identifier field
+2. Enter any password
+3. Submit",Authorized security test environment,"Identifier: ' OR '1'='1
+Password: Test#123",No authenticated session; no data or system state is altered,"Input is treated as data, authentication fails safely, and no database/system error is exposed.",Not executed,Not Run,Unassigned,—,Critical,Negative,Security test; coordinate with application owner.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Cross-site scripting payload,FB-LGN-022,Verify login inputs do not execute or reflect script content unsafely.,"1. Enter a harmless test script string
+2. Enter any password
+3. Submit
+4. Observe page and error area",Authorized security test environment,<script>alert('test')</script> / Test#123,No authenticated session; no script persists or executes,The payload is encoded or rejected; no script executes and no unsafe reflection occurs.,Not executed,Not Run,Unassigned,—,Critical,Negative,Use only a harmless payload in an approved environment.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,HTTPS transport,FB-LGN-023,Verify login and authentication requests use secure transport.,"1. Navigate using an http URL
+2. Observe redirect
+3. Submit login while inspecting approved browser security indicators",Internet available; browser developer tools permitted,Valid test credentials,"Authenticated session, if created, uses secure transport",HTTP redirects to HTTPS; no credential is sent over an insecure connection; no mixed-content warning appears.,Not executed,Not Run,Unassigned,—,Critical,Positive,Never capture or share real credentials in logs.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Back button after logout,FB-LGN-024,Verify protected content is not restored after logout by browser navigation.,"1. Log in
+2. Log out
+3. Press browser Back
+4. Attempt to interact with prior content",Active test account; browser cache enabled,Valid test credentials,Session remains terminated,Protected content is not accessible; reauthentication is required and cached views do not restore an active session.,Not executed,Not Run,Unassigned,—,Critical,Negative,Check both visible content and network access.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Session persists on refresh,FB-LGN-025,Verify a valid authenticated session survives a normal page refresh.,"1. Log in successfully
+2. Refresh the Home page
+3. Observe account state",Active test account; normal cookies enabled,Valid test credentials,User remains authenticated within valid session policy,Refresh completes without returning the user to login or switching accounts.,Not executed,Not Run,Unassigned,—,High,Positive,Run before explicit logout or session expiry.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Expired session handling,FB-LGN-026,Verify an expired session redirects safely to reauthentication.,"1. Log in
+2. Expire the test session using approved method
+3. Request protected content",Ability to expire a session in test environment,Valid test credentials,Expired session cannot access protected content,User is prompted to log in again; unsaved sensitive data is not exposed and no redirect loop occurs.,Not executed,Not Run,Unassigned,—,Critical,Negative,Use test tooling rather than waiting for production timeout.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Keyboard-only navigation,FB-LGN-027,Verify all login actions can be completed with a keyboard.,"1. Load login page
+2. Navigate using Tab/Shift+Tab
+3. Enter credentials
+4. Submit with keyboard",Login page loaded,Valid test credentials,Authenticated session is created,Focus order is logical and visible; all controls are reachable and login succeeds without a pointing device.,Not executed,Not Run,Unassigned,—,High,Positive,Include recovery and create-account links in focus-order check.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Accessible labels and errors,FB-LGN-028,Verify fields and validation messages are programmatically identifiable.,"1. Inspect with an approved screen reader
+2. Navigate to each field
+3. Trigger validation errors",Screen reader available; user logged out,"Blank credentials, then malformed identifier",No authenticated session is created,Controls have meaningful names; required state and errors are announced; focus is managed appropriately.,Not executed,Not Run,Unassigned,—,High,Negative,Test with at least one supported screen reader/browser pairing.
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Mobile responsive login,FB-LGN-029,Verify login remains usable on a supported mobile viewport.,"1. Open login page on supported mobile device/viewport
+2. Rotate if supported
+3. Enter valid credentials
+4. Submit",Supported mobile browser; active account,Valid test credentials,Authenticated mobile session is created,"Fields, keyboard, buttons, and messages remain visible and usable without unintended horizontal scrolling.",Not executed,Not Run,Unassigned,—,High,Positive,"Capture device, OS, browser, and viewport in execution comments."
+Facebook,Login,Yogesh Diwakar,06-Oct-2026,Pending assignment,Pending review,Network interruption during login,FB-LGN-030,Verify a lost network connection is handled without duplicate or misleading authentication.,"1. Enter valid credentials
+2. Interrupt network before submission/response
+3. Select Log In
+4. Restore network and retry once",Ability to simulate network loss; user logged out,Valid test credentials,At most one valid session is created after recovery,A clear retryable error is shown; page remains stable; restored connection allows a controlled retry without duplicate actions.,Not executed,Not Run,Unassigned,—,High,Negative,Confirm the password is not exposed in diagnostics or page text.
